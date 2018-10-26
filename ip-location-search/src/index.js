@@ -12,28 +12,39 @@ class App extends Component {
 			city: '',
 			country: '',
 			error: null
-		}
+		};
+	}
 
+	onButtonClick() {
+		fetch(`http://api.ipstack.com/${this.state.term}?access_key=${API_KEY}`)
+			.then((res) => {
+				if (res.ok) {
+					return res;
+				} else {
+					throw Error(`Request rejected with status ${res.status}`);
+				}
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				console.log(data.city);
+				console.log(data.country_name);
+				console.log(this);
+				return this.setState({ city: data.city, country: data.country_name });
+			})
+			.catch((error) => this.setState({ error }));
 	}
 
 	render() {
 		return (
 			<div>
-				<input value={this.state.term} onChange={event => this.onInputChange(event.target.value)}/>
-				<p>City: {this.city}</p>
-				<p>Country: {this.country}</p>
-				<p>error: {this.error}</p>
+				<input value={this.state.term} onChange={(event) => this.setState({ term: event.target.value })} />
+				<button onClick={() => this.onButtonClick()}>Submit</button>
+				<p>City: {this.state.city}</p>
+				<p>Country: {this.state.country}</p>
+				<p>error: {this.state.error}</p>
 			</div>
 		);
-	}
-
-	onInputChange(term) {
-		this.setState({term});
-
-		fetch(`http://api.ipstack.com/${term}?${API_KEY}`)
-			.then(response => response.json())
-			.then(data => this.setState({city: data.city, country: data.country}))
-			.catch(error => this.setState({error}));
 	}
 }
 
