@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	/* font-size: 10px; */
+}
+
+body {
+	background-color: #e8e8e8 !important;
+}
+
+#root {
+	align-items: center;
+	display: flex;
+	height: 33vh;
+	margin: 2rem;
+}
+
+.container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+form {
+	width: 40%;
+}
