@@ -7,7 +7,7 @@ To become familiar with the basics of React
 ## Lessons learned/practiced:
 1. State
 2. Class based vs functional components
-3. Props: specifically, values and passing functions as callbacks
+3. Props: specifically, passing values and passing functions as callbacks
 4. Arrow functions
 5. Using Fetch to make API requests
 6. React vs ReactDOM
