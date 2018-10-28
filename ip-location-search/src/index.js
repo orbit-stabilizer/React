@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 const API_KEY = 'b6b77e811c529d0c1d594b9954eb3b5a';
-const MAPBOX_API_KEY = 'sk.eyJ1Ijoia2Rlb3dyYSIsImEiOiJjam5xenBmM3EwMzFwM3Bxend6bWFuamc5In0.GGMg0SpiXVELreGJ6PJCxw';
 
 class App extends Component {
 	constructor(props) {
@@ -10,9 +9,8 @@ class App extends Component {
 
 		this.state = {
 			term: '',
-			longitude: '',
-			latitude: '',
-			map: '',
+			city: '',
+			country: '',
 			error: null
 		};
 	}
@@ -21,25 +19,9 @@ class App extends Component {
 		event.preventDefault();
 
 		fetch(`http://api.ipstack.com/${this.state.term}?access_key=${API_KEY}`)
-			.then((res) => {
-				if (res.ok) {
-					return res;
-				} else {
-					throw Error(`Request rejected with status ${res.status}`);
-				}
-			})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
-				return this.setState({ longitude: data.longitude, latitude: data.latitude }, () =>
-					fetch(
-						`http://api.mapbox.com/v4/mapbox.mapbox-streets-v7/zoomwheel,zoompan.html?access_token=${MAPBOX_API_KEY}#zoom/${this
-							.state.latitude}/${this.state.longitude}`
-					)
-						.then((res) => res.text())
-						.then((map) => this.setState({ map }))
-				);
-			})
+			.then((res) => (res.ok ? res : Error(`Request rejected with status ${res.status}`)))
+			.then((res) => res.json())
+			.then((data) => this.setState({ city: data.city, country: data.country_name }))
 			.catch((error) => this.setState({ error }));
 	}
 
@@ -59,10 +41,11 @@ class App extends Component {
 						</button>
 					</div>
 				</form>
-				<iframe
-					src={`http://api.mapbox.com/v4/mapbox.mapbox-streets-v7/zoomwheel,zoompan.html?access_token=${MAPBOX_API_KEY}#zoom/${this
-						.state.latitude}/${this.state.longitude}`}
-				/>
+				<div className="results-div">
+					<p>City: {this.state.city}</p>
+					<p>Country: {this.state.country}</p>
+					<p>Error: {this.state.error}</p>
+				</div>
 			</div>
 		);
 	}

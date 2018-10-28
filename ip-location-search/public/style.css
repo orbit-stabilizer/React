@@ -28,6 +28,7 @@ body {
 	flex-direction: column;
 }
 
-form {
+form,
+.results-div {
 	width: 40%;
 }
