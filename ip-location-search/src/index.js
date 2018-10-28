@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const API_KEY = 'b6b77e811c529d0c1d594b9954eb3b5a';
 
 class App extends Component {
-	constructor(props) {
+constructor(props) {
 		super(props);
 
 		this.state = {
