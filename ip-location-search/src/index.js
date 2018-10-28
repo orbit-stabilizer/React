@@ -11,7 +11,7 @@ constructor(props) {
 			term: '',
 			city: '',
 			country: '',
-			error: null
+			error: null 
 		};
 	}
 
