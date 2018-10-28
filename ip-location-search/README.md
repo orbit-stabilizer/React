@@ -16,4 +16,5 @@ To become familiar with the basics of React
 ## Points to improve upon for next time:
 1. Have a clear idea of what the project should be before starting
     * Create mockups of the different views and actions
+2. Focus more on the architectural design of the component structure
 
