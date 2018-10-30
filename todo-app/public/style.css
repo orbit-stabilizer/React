@@ -1,0 +1,11 @@
+.remove-item {
+	color: red;
+}
+
+.complete {
+	color: green;
+}
+
+.incomplete {
+	color: grey;
+}
