@@ -3,19 +3,21 @@ import React, { Component } from 'react';
 class TodoListItem extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = { completed: false };
 	}
+
 	render() {
 		let status = 'incomplete';
-		if (this.state.completed) {
+		if (this.props.todo.status === false) {
 			status = 'complete';
 		}
 		return (
-			<li className="list-group-item d-flex justify-content-between align-items-center">
-				<div className="d-flex justify-content-between align-items-center" style={{ minWidth: '4rem' }}>
-					<i className={`fas fa-check ${status}`} onClick={this.toggleClass} />
-					{this.props.todo.value}
+			<li className={`list-group-item d-flex justify-content-between align-items-center ${status}`}>
+				<div className="d-flex justify-content-between align-items-center check-and-item-div">
+					<i
+						className="fas fa-check-circle"
+						onClick={() => this.props.handleToggleStatusTodo(this.props.todo.id)}
+					/>
+					<input readOnly value={this.props.todo.value} />
 				</div>
 				<i
 					className="fas fa-times remove-item"
@@ -24,11 +26,6 @@ class TodoListItem extends Component {
 			</li>
 		);
 	}
-
-	toggleClass = () => {
-		this.setState({ completed: !this.state.completed });
-		this.props.handleToggleStatusTodo(this.props.todo.id);
-	};
 }
 
 export default TodoListItem;

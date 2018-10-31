@@ -1,11 +1,72 @@
-.remove-item {
+.list-group-item i.remove-item {
 	color: red;
 }
 
-.complete {
+.complete i {
 	color: green;
 }
 
-.incomplete {
+.incomplete i {
 	color: grey;
+}
+
+.list-group-item input {
+	border: none;
+}
+
+.list-group-item input:disabled {
+	background-color: inherit;
+}
+
+.list-group-item.complete input {
+	text-decoration: line-through;
+	color: grey;
+	transition: all .5s;
+}
+
+.list-group-item.incomplete input {
+	transition: all .5s;
+}
+
+li {
+	max-width: 740px;
+}
+
+.list-group {
+	padding-left: 15px;
+}
+
+.fas.fa-check {
+	width: 100%;
+}
+
+.check-and-item-div {
+	min-width: 15rem;
+}
+
+.status-change-span:not(:last-child) {
+	margin-right: 10px;
+}
+
+.footer {
+	border: 1px grey solid;
+	max-width: 710px;
+}
+
+#show-all-btn.all-items {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+#show-active-btn.active-items {
+	color: #fff;
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+#show-completed-btn.completed-items {
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
 }

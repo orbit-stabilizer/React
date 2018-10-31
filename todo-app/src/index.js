@@ -3,31 +3,42 @@ import ReactDOM from 'react-dom';
 
 import TodoAdd from './components/todo_add';
 import TodoList from './components/todo_list';
+import TodoFooter from './components/todo_footer';
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
-
-		const displayStatus = { ALL: 0, ACTIVE: 1, COMPLETED: 2 };
 
 		// todo = {value, status, id} # for documentation purposes
 
 		this.state = {
 			todos: [],
 			id: 0,
-			showStatus: displayStatus.ALL
+			showStatus: 'all'
 		};
 	}
 
 	render() {
+		let todos = this.state.todos;
+		if (this.state.showStatus === 'active') {
+			todos = this.state.todos.filter((todo) => todo.status === true);
+		} else if (this.state.showStatus === 'completed') {
+			todos = this.state.todos.filter((todo) => todo.status === false);
+		}
 		return (
 			<div>
 				<h3 className="text-center">todos</h3>
 				<TodoAdd handleAddTodo={(value) => this.handleAddTodo(value)} />
 				<TodoList
-					todos={this.state.todos}
+					todos={todos}
 					handleDeleteTodo={this.handleDeleteTodo}
 					handleToggleStatusTodo={this.handleToggleStatusTodo}
+				/>
+				<TodoFooter
+					handleClearCompletedTodos={this.handleClearCompletedTodos}
+					numTodos={this.state.todos.filter((todo) => todo.status !== false).length}
+					handleShowStatusChange={this.handleShowStatusChange}
+					showStatus={this.state.showStatus}
 				/>
 			</div>
 		);
@@ -56,7 +67,7 @@ export default class App extends Component {
 	};
 
 	handleClearCompletedTodos = () => {
-		const todos = this.state.filter((todo) => todo.status !== false);
+		const todos = this.state.todos.filter((todo) => todo.status !== false);
 		this.setState({ todos });
 	};
 
