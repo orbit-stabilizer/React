@@ -20,11 +20,14 @@ export default class App extends Component {
 
 	render() {
 		let todos = this.state.todos;
+		const numTodos = this.state.todos.filter((todo) => todo.status !== false).length;
+
 		if (this.state.showStatus === 'active') {
 			todos = this.state.todos.filter((todo) => todo.status === true);
 		} else if (this.state.showStatus === 'completed') {
 			todos = this.state.todos.filter((todo) => todo.status === false);
 		}
+
 		return (
 			<div>
 				<h3 className="text-center">todos</h3>
@@ -36,7 +39,7 @@ export default class App extends Component {
 				/>
 				<TodoFooter
 					handleClearCompletedTodos={this.handleClearCompletedTodos}
-					numTodos={this.state.todos.filter((todo) => todo.status !== false).length}
+					numTodos={numTodos}
 					handleShowStatusChange={this.handleShowStatusChange}
 					showStatus={this.state.showStatus}
 				/>

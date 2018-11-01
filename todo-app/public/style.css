@@ -1,3 +1,7 @@
+.container {
+	margin-top: 2rem;
+}
+
 .list-group-item i.remove-item {
 	color: red;
 }
@@ -49,8 +53,9 @@ li {
 }
 
 .footer {
-	border: 1px grey solid;
+	border: 1px solid #ced4da;
 	max-width: 710px;
+	border-radius: .25rem;
 }
 
 #show-all-btn.all-items {
@@ -69,4 +74,24 @@ li {
 	color: #fff;
 	background-color: #6c757d;
 	border-color: #6c757d;
+}
+
+@media only screen and (max-width: 992px) {
+	.footer {
+		flex-direction: column;
+		max-width: 480px;
+	}
+	.footer > * {
+		margin-bottom: .8rem;
+	}
+}
+
+.list-group-item > i {
+	display: none;
+	transition: all .5s;
+}
+
+.list-group-item:hover > * {
+	display: initial;
+	transition: all .5s;
 }
