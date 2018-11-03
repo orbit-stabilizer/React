@@ -3,6 +3,16 @@ table {
 }
 
 table * {
-	padding: 50px;
 	border: 1px solid grey;
+}
+td {
+	padding: 50px;
+}
+
+tbody {
+	width: 10px;
+}
+
+.detail-div {
+	display: block;
 }

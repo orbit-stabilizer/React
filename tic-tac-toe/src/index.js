@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Board from './components/board';
+import Detail from './components/detail';
 
 class App extends Component {
 	constructor(props) {
@@ -17,8 +18,8 @@ class App extends Component {
 		let diag_bottom_top = 0;
 
 		this.state = {
-			nextPlayer: 0,
-			board: [],
+			nextPlayer: 1,
+			board: [ '', '', '', '', '', '', '', '', '' ],
 			history: [ [] ],
 			victory: false,
 			victoryLanes: [ h_top, h_mid, h_bot, v_top, v_mid, v_bot, diag_top_down, diag_bottom_top ]
@@ -27,10 +28,23 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<Board />
+			<div className="row">
+				<Board values={this.state.board} handleBoxClick={(id) => this.handleBoxClick(id)} />
+				<Detail nextPlayer={this.state.nextPlayer ? 'X' : 'O'} />
 			</div>
 		);
+	}
+
+	handleBoxClick(id) {
+		const newBoard = this.state.board;
+		newBoard[id] = this.state.nextPlayer ? 'X' : 'O';
+		this.setState({ board: newBoard }, this.setState({ nextPlayer: !this.state.nextPlayer }));
+	}
+
+	checkVictory() {
+		if (3 in this.state.victoryLanes) {
+			this.setState({ victory: true });
+		}
 	}
 }
 
