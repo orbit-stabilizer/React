@@ -1,0 +1,16 @@
+Style: 
+  ✔ make <td> cell width and height fixed @est(15m) @started(18-11-03 21:30) @done(18-11-03 21:38) @lasted(8m37s)
+    -> Set `table{table-layout: fixed} and tr{line-height:0}`
+  ✔ make font-size for 'X' and 'O' larger @est(10m) @done(18-11-03 21:39)
+  ✘ find new font-family for 'X' and 'O' and update @est(20m) @cancelled(18-11-03 21:40)
+    -> No need - font looks fine now.
+
+Functionality:
+  Board:
+    ✔ disable <td> cell after fill @est(15m) @started(18-11-03 21:40) @done(18-11-03 21:44) @lasted(4m45s)
+  Detail:
+    ✔ show victor if someone won, else show draw @est(15m) @started(18-11-03 21:45) @done(18-11-03 22:13) @lasted(28m53s)
+    ☐ disable board after victory @est(15m)
+    ☐ show history @est(15m)
+    ☐ allow user to select history object and update board @est(1h)
+    ☐ after creating new move, update history @est(30m)

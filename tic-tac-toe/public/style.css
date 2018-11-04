@@ -1,16 +1,19 @@
-table {
+table.fixed {
 	border-collapse: collapse;
+	table-layout: fixed;
 }
 
-table * {
+table.fixed * {
 	border: 1px solid grey;
 }
-td {
-	padding: 50px;
+
+table.fixed tr {
+	line-height: 0px;
 }
 
-tbody {
-	width: 10px;
+table.fixed td {
+	padding: 50px;
+	font-size: 2rem;
 }
 
 .detail-div {
