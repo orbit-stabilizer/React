@@ -10,7 +10,16 @@ Functionality:
     ✔ disable <td> cell after fill @est(15m) @started(18-11-03 21:40) @done(18-11-03 21:44) @lasted(4m45s)
   Detail:
     ✔ show victor if someone won, else show draw @est(15m) @started(18-11-03 21:45) @done(18-11-03 22:13) @lasted(28m53s)
-    ☐ disable board after victory @est(15m)
-    ☐ show history @est(15m)
-    ☐ allow user to select history object and update board @est(1h)
-    ☐ after creating new move, update history @est(30m)
+    ✔ disable board after victory @est(15m) @done(18-11-04 22:02)
+    ✔ show history @est(15m) @done(18-11-04 22:57)
+    ✔ allow user to select history object and update board @est(1h) @done(18-11-04 22:57)
+    ✔ after creating new move, update history @est(30m) @done(18-11-05 00:14)
+      -> Completed, but a small bug is present - need to refactor 
+
+Architecture:
+  ✔ Refactor code for readability and improved structure @est(2h) @done(18-11-08 09:26)
+
+Bugs: 
+  ✔ History needs to track nextPlayer @done(18-11-08 10:39)
+  ✔ Clicking on history list items after victory should allow player to click board cells with success @done(18-11-08 10:39)
+    -> Fixing the first bug will most likely fix this bug

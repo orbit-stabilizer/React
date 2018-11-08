@@ -1,60 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Board extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = { finished: false };
-	}
-	render() {
-		return (
-			<table className={`col-md-4 fixed finished-${this.state.finished}`}>
-				<tbody>
-					<tr>
-						<td onClick={() => (!this.props.values[0] ? this.handleCellClick(0) : '')}>
-							{this.props.values[0]}
-						</td>
-						<td onClick={() => (!this.props.values[1] ? this.handleCellClick(1) : '')}>
-							{this.props.values[1]}
-						</td>
-						<td onClick={() => (!this.props.values[2] ? this.handleCellClick(2) : '')}>
-							{this.props.values[2]}
-						</td>
-					</tr>
-					<tr>
-						<td onClick={() => (!this.props.values[3] ? this.handleCellClick(3) : '')}>
-							{this.props.values[3]}
-						</td>
-						<td onClick={() => (!this.props.values[4] ? this.handleCellClick(4) : '')}>
-							{this.props.values[4]}
-						</td>
-						<td onClick={() => (!this.props.values[5] ? this.handleCellClick(5) : '')}>
-							{this.props.values[5]}
-						</td>
-					</tr>
-					<tr>
-						<td onClick={() => (!this.props.values[6] ? this.handleCellClick(6) : '')}>
-							{this.props.values[6]}
-						</td>
-						<td onClick={() => (!this.props.values[7] ? this.handleCellClick(7) : '')}>
-							{this.props.values[7]}
-						</td>
-						<td onClick={() => (!this.props.values[8] ? this.handleCellClick(8) : '')}>
-							{this.props.values[8]}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		);
-	}
-
-	handleCellClick(id) {
-		if (!this.props.victor) {
-			this.props.handleCellClick(id);
-		} else {
-			this.setState({ finished: !this.state.finished });
-		}
-	}
-}
+const Board = ({ board, onCellClick }) => {
+	return (
+		<table className="col-md-4 fixed">
+			<tbody>
+				<tr>
+					<td onClick={() => onCellClick(0)}>{board[0]}</td>
+					<td onClick={() => onCellClick(1)}>{board[1]}</td>
+					<td onClick={() => onCellClick(2)}>{board[2]}</td>
+				</tr>
+				<tr>
+					<td onClick={() => onCellClick(3)}>{board[3]}</td>
+					<td onClick={() => onCellClick(4)}>{board[4]}</td>
+					<td onClick={() => onCellClick(5)}>{board[5]}</td>
+				</tr>
+				<tr>
+					<td onClick={() => onCellClick(6)}>{board[6]}</td>
+					<td onClick={() => onCellClick(7)}>{board[7]}</td>
+					<td onClick={() => onCellClick(8)}>{board[8]}</td>
+				</tr>
+			</tbody>
+		</table>
+	);
+};
 
 export default Board;
