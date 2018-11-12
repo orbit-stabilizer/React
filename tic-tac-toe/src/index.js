@@ -11,11 +11,11 @@ class App extends Component {
 
 		this.state = {
 			board: [ '', '', '', '', '', '', '', '', '' ],
+			nextPlayerOrVictor: 'X',
 			history: {
 				boards: [ [] ],
 				nextPlayerOrVictors: [ 'X' ]
 			},
-			nextPlayerOrVictor: 'X',
 			clearHistory: [ false, 0 ]
 		};
 	}
