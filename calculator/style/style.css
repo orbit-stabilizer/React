@@ -1,0 +1,27 @@
+.table {
+	width: initial !important;
+	border: 1px solid gray !important;
+	max-width: 200px !important;
+}
+
+.table td,
+.table th {
+	border-top: none;
+}
+
+.table td {
+	border: 1px solid grey;
+}
+
+.table tr:first-child td {
+	border: none;
+}
+
+.table tr:last-child td:nth-child(1) {
+	border-right: none;
+}
+
+.table tr:last-child td:nth-child(2),
+.table tr:last-child td:nth-child(3) {
+	border: none;
+}
