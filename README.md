@@ -1,2 +1,2 @@
-# React-Redux
-For React/Redux projects... big and small.
+# React
+For React projects... big and small.
